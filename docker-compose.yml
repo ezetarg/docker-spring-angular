@@ -1,0 +1,17 @@
+version: '3.5'
+
+services:
+
+  demo-back:
+    container_name: springboot-demo
+    build: ./backend
+    restart: always
+
+  demo-front:
+    container_name: angular-demo
+    build: ./frontend
+    restart: always
+    ports:
+      - '4200:80' # Port mapping
+    depends_on:
+      - demo-back
